@@ -92,14 +92,17 @@ class YuManHua : ParsedHttpSource() {
         val bookId = response.request.url.pathSegments.dropLast(1).last()
 
         // 详情页只给最新 20 话；首条 a 是"开始阅读"入口，要跳过
+        // 注意：jsoup 1.15 的 Elements.filter(NodeFilter) 会抢占 Kotlin 的 filter，必须先 asSequence()
         val chapters = doc.select(".chaplist-box a")
+            .asSequence()
             .filter { !it.text().contains("开始阅读") }
             .map { a ->
                 SChapter.create().apply {
                     setUrlWithoutDomain(a.attr("href"))
                     name = a.text().trim()
                 }
-            }.toMutableList()
+            }
+            .toMutableList()
 
         // POST /morechapter {id} 补齐剩余全量章节，顺序同为 新 -> 旧
         val body = FormBody.Builder().add("id", bookId).build()
