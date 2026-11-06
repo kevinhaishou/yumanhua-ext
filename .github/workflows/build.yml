@@ -25,11 +25,17 @@ jobs:
         with:
           gradle-version: '8.7'
 
+      - name: Clean
+        shell: bash
+        run: |
+          set -o pipefail
+          gradle clean --no-daemon --no-build-cache 2>&1 | tee build.log
+
       - name: Build release
         shell: bash
         run: |
           set -o pipefail
-          gradle assembleRelease --no-daemon --stacktrace 2>&1 | tee build.log
+          gradle assembleRelease --no-daemon --no-build-cache --rerun-tasks --stacktrace 2>&1 | tee -a build.log
 
       - name: Upload artifact
         if: always()
