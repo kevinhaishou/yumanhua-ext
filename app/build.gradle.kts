@@ -30,9 +30,9 @@ android {
 }
 
 dependencies {
-    compileOnly("com.github.keiyoushi:extensions-lib:1.4.2")
-    compileOnly("com.squareup.okhttp3:okhttp:4.12.0")
-    compileOnly("org.jsoup:jsoup:1.17.2")
+    compileOnly(project(":libstub"))
+    compileOnly("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
     compileOnly("io.reactivex:rxjava:1.3.8")
-    compileOnly("com.github.inorichi.injekt:injekt-core:65b0440")
+    compileOnly("org.jsoup:jsoup:1.15.3")
+    compileOnly("androidx.preference:preference-ktx:1.2.1")
 }

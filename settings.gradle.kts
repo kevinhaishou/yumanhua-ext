@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "yumanhua-extension"
 include(":app")
+include(":libstub")
