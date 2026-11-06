@@ -10,6 +10,7 @@ import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.online.ParsedHttpSource
+import eu.kanade.tachiyomi.util.asJsoup
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -59,9 +60,9 @@ class YuManHua : ParsedHttpSource() {
     override fun latestUpdatesFromElement(element: org.jsoup.nodes.Element) = listFromElement(element)
     override fun searchMangaFromElement(element: org.jsoup.nodes.Element) = listFromElement(element)
 
-    override fun popularMangaNextPage() = false
-    override fun latestUpdatesNextPage() = false
-    override fun searchMangaNextPage() = false
+    override fun popularMangaNextPageSelector(): String? = null
+    override fun latestUpdatesNextPageSelector(): String? = null
+    override fun searchMangaNextPageSelector(): String? = null
 
     private fun listFromElement(element: org.jsoup.nodes.Element): SManga = SManga.create().apply {
         setUrlWithoutDomain(element.select("a").first()!!.attr("href"))
@@ -223,7 +224,7 @@ class YuManHua : ParsedHttpSource() {
         CategoryFilter(CATEGORIES),
     )
 
-    private class CategoryFilter(vals: Array<Pair<String, String>>) :
+    private class CategoryFilter(private val vals: Array<Pair<String, String>>) :
         Filter.Select<String>("分类", vals.map { it.first }.toTypedArray()) {
         fun toUriPart() = vals[state].second
     }
