@@ -22,16 +22,16 @@ Daemon will be stopped at the end of the build
 > Task :libstub:generateReleaseResources
 > Task :libstub:packageReleaseResources
 > Task :libstub:parseReleaseLocalResources
-> Task :app:processReleaseManifestForPackage
 > Task :libstub:javaPreCompileRelease
 > Task :app:javaPreCompileRelease
+> Task :app:processReleaseManifestForPackage
 > Task :libstub:generateReleaseRFile
-> Task :app:extractProguardFiles
 > Task :app:processReleaseResources
+> Task :app:extractProguardFiles
 > Task :libstub:extractProguardFiles
 > Task :libstub:prepareLintJarForPublish
-> Task :libstub:processReleaseManifest
 > Task :libstub:mergeReleaseJniLibFolders
+> Task :libstub:processReleaseManifest
 > Task :libstub:mergeReleaseNativeLibs NO-SOURCE
 > Task :libstub:stripReleaseDebugSymbols NO-SOURCE
 > Task :libstub:copyReleaseJniLibsProjectAndLocalJars
@@ -42,15 +42,31 @@ Daemon will be stopped at the end of the build
 > Task :libstub:packageReleaseAssets
 > Task :libstub:prepareReleaseArtProfile
 > Task :libstub:writeReleaseLintModelMetadata
+> Task :libstub:writeReleaseAarMetadata
 > Task :app:mergeReleaseJniLibFolders
 > Task :app:mergeReleaseNativeLibs NO-SOURCE
 > Task :app:stripReleaseDebugSymbols NO-SOURCE
 > Task :app:extractReleaseNativeSymbolTables NO-SOURCE
-> Task :libstub:writeReleaseAarMetadata
 > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
 > Task :app:checkReleaseDuplicateClasses
 > Task :app:desugarReleaseFileDependencies
 > Task :app:mergeReleaseStartupProfile
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :libstub:mapReleaseSourceSetPaths
+> Task :app:optimizeReleaseResources
+> Task :libstub:mergeReleaseResources
+> Task :libstub:verifyReleaseResources
+> Task :app:mergeExtDexRelease
 
 > Task :libstub:compileReleaseKotlin
 w: file:///home/runner/work/yumanhua-ext/yumanhua-ext/vendor/extlib/library/src/main/java/eu/kanade/tachiyomi/network/JavaScriptEngine.kt:8:24 Parameter 'context' is never used
@@ -75,26 +91,29 @@ w: file:///home/runner/work/yumanhua-ext/yumanhua-ext/vendor/extlib/library/src/
 w: file:///home/runner/work/yumanhua-ext/yumanhua-ext/vendor/extlib/library/src/main/java/eu/kanade/tachiyomi/network/interceptor/SpecificHostRateLimitInterceptor.kt:26:5 Parameter 'unit' is never used
 w: file:///home/runner/work/yumanhua-ext/yumanhua-ext/vendor/extlib/library/src/main/java/eu/kanade/tachiyomi/util/JsoupExtensions.kt:10:22 Parameter 'html' is never used
 
-> Task :app:mergeExtDexRelease
 > Task :libstub:compileReleaseJavaWithJavac
-> Task :libstub:bundleLibCompileToJarRelease
 > Task :libstub:bundleLibRuntimeToJarRelease
 > Task :libstub:processReleaseJavaRes
+> Task :libstub:bundleLibCompileToJarRelease
 > Task :libstub:createFullJarRelease
 > Task :libstub:generateReleaseLintModel
+> Task :libstub:extractReleaseAnnotations
+> Task :libstub:mergeReleaseGeneratedProguardFiles
+> Task :libstub:mergeReleaseConsumerProguardFiles
+> Task :libstub:generateReleaseLintVitalModel
+> Task :libstub:mergeReleaseJavaResource
+> Task :libstub:syncReleaseLibJars
+> Task :libstub:bundleReleaseLocalLintAar
+> Task :libstub:bundleReleaseAar
+> Task :libstub:assembleRelease
 
 > Task :app:compileReleaseKotlin FAILED
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:30:1 Class 'YuManHua' is not abstract and does not implement abstract base class member protected abstract fun latestUpdatesNextPageSelector(): String? defined in eu.kanade.tachiyomi.source.online.ParsedHttpSource
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:62:5 'popularMangaNextPage' overrides nothing
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:63:5 'latestUpdatesNextPage' overrides nothing
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:64:5 'searchMangaNextPage' overrides nothing
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:90:28 Unresolved reference: asJsoup
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:95:24 Unresolved reference: it
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:96:20 Cannot infer a type for this parameter. Please specify it explicitly.
-e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:228:27 Unresolved reference: vals
+e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:96:21 Expected 2 parameters of types Node!, Int
+e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:96:21 Type mismatch: inferred type is () -> NodeFilter.FilterResult! but ((Node!, Int) -> NodeFilter.FilterResult!)! was expected
+e: file:///home/runner/work/yumanhua-ext/yumanhua-ext/app/src/main/java/eu/kanade/tachiyomi/extension/zh/yumanhua/YuManHua.kt:96:24 Unresolved reference: it
 
-> Task :libstub:extractReleaseAnnotations
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1793965452300.json
+> Task :libstub:lintVitalAnalyzeRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1793965617039.json
 
 FAILURE: Build failed with an exception.
 
@@ -140,6 +159,36 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:com
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:116)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
 Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
@@ -267,6 +316,36 @@ Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionExcept
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:463)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:380)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:116)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:264)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:80)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
 Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
@@ -303,5 +382,5 @@ Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilat
 	... 2 more
 
 
-BUILD FAILED in 59s
-49 actionable tasks: 49 executed
+BUILD FAILED in 23s
+70 actionable tasks: 70 executed
